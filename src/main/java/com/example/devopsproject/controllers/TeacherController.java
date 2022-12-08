@@ -25,4 +25,11 @@ public class TeacherController {
         Teacher teacher = this.teacherService.createTeacher(newTeacher);
         return teacher;
     }
+
+    @GetMapping("/{id}")
+    public Teacher getTeacherById(@PathVariable("id") Long id) throws Exception
+    {
+        Teacher teacher = this.teacherService.getTeacherById(id);
+        return teacher;
+    }
 }
