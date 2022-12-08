@@ -19,4 +19,10 @@ public class TeacherController {
         return teachersList;
     }
 
+    @PostMapping("/")
+    public Teacher createNewTeacher(@RequestBody Teacher newTeacher) throws Exception
+    {
+        Teacher teacher = this.teacherService.createTeacher(newTeacher);
+        return teacher;
+    }
 }

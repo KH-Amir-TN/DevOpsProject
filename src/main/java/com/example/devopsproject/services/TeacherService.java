@@ -12,8 +12,10 @@ public class TeacherService {
     TeacherRepository teacherRepository;
 
     public List<Teacher> getAllTeachers() throws Exception {
+        return this.teacherRepository.findAll();
+    }
 
-        List<Teacher> teachers = this.teacherRepository.findAll();
-        return teachers;
+    public Teacher createTeacher(Teacher teacher) throws Exception {
+        return this.teacherRepository.save(teacher);
     }
 }
