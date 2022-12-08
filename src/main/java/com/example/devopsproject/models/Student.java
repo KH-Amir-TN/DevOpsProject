@@ -1,10 +1,9 @@
 package com.example.devopsproject.models;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-public class Teacher {
+public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,8 +12,10 @@ public class Teacher {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "teacher")
-    private List<Student> students;
+    @ManyToOne
+    @JoinColumn(name = "teacher_id", nullable = true)
+    private Teacher teacher;
+
     public String getName() {
         return name;
     }
@@ -22,7 +23,6 @@ public class Teacher {
     public void setName(String name) {
         this.name = name;
     }
-
     public Long getId() {
         return id;
     }
@@ -30,13 +30,28 @@ public class Teacher {
     public void setId() {
         this.id = id;
     }
+    public Teacher getTeacher() {
+        return teacher;
+    }
 
-    public Teacher(String name) {
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Student(String name) {
         this.name = name;
     }
-    public Teacher(Long id, String name) {
+    public Student(Long id, String name) {
         this.id = id;
         this.name = name;
     }
-    public Teacher() {}
+    public Student(Long id, String name, Teacher teacher) {
+        this.id = id;
+        this.name = name;
+        this.teacher = teacher;
+    }
+    public Student() {
+    }
+
+
 }
