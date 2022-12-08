@@ -30,4 +30,11 @@ public class StudentController {
         Student student = this.studentService.createStudent(newStudent, teacherId);
         return student;
     }
+
+    @GetMapping("/{studentId}")
+    public Student getStudentById(@PathVariable("studentId") Long studentId) throws Exception
+    {
+        Student student = this.studentService.getStudentById(studentId);
+        return student;
+    }
 }

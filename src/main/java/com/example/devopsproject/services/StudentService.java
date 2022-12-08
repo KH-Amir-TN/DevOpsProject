@@ -32,4 +32,10 @@ public class StudentService {
         List<Student> students = this.studentRepository.findAll();
         return students;
     }
+
+    public Student getStudentById(Long studentId) throws Exception {
+        Optional<Student> studentData = this.studentRepository.findById(studentId);
+        Student student = studentData.orElseThrow(()-> new Exception("Student not found"));
+        return student;
+    }
 }
