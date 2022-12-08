@@ -20,4 +20,14 @@ public class StudentController {
         List<Student> studentsList = this.studentService.getAllStudents();
         return studentsList;
     }
+
+    @PostMapping("/{teacherId}")
+    public Student createNewStudent (
+        @RequestBody Student newStudent, 
+        @PathVariable("teacherId") Long teacherId
+    ) throws Exception
+    {
+        Student student = this.studentService.createStudent(newStudent, teacherId);
+        return student;
+    }
 }
