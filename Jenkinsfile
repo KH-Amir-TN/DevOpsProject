@@ -1,10 +1,29 @@
 pipeline {
     agent any
+    tools {
+        maven 'Maven 3.3.9'
+        jdk 'jdk8'
+    }
     stages {
-        stage ('test') {
+       stage ('CLEAN') {
             steps {
-                echo "Hello World";
+                sh 'mvn clean'
             }
-         }
+       }
+       stage ('INSTALL') {
+            steps {
+                sh 'mvn install'
+            }
+       }
+       stage ('TEST') {
+            steps {
+                sh 'mvn test'
+            }
+       }
+       stage ('BUILD') {
+            steps {
+                sh 'mvn build'
+            }
+       }
     }
 }
